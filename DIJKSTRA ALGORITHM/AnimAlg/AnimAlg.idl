@@ -1,0 +1,57 @@
+// AnimAlg.idl : IDL source for AnimAlg.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (AnimAlg.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+#include "olectl.h"
+	
+
+	[
+		object,
+		uuid(5DDF46FF-095C-4A62-9BBF-B20A2966DC8A),
+		dual,
+		helpstring("IDijkstra Interface"),
+		pointer_default(unique)
+	]
+	interface IDijkstra : IDispatch
+	{
+		[id(1), helpstring("method Initialize")] HRESULT Initialize([in] long nrvert, [in] short bidir);
+		[id(2), helpstring("method StartAddNodes")] HRESULT StartAddNodes();
+		[id(3), helpstring("method StartAddEdges")] HRESULT StartAddEdges();
+		[id(4), helpstring("method ShortestPath")] HRESULT ShortestPath([in] long node1, [in] long node2);
+	};
+
+[
+	uuid(E5266849-C5D9-4D8C-AA1C-B9C65D7BE1A6),
+	version(1.0),
+	helpstring("AnimAlg 1.0 Type Library")
+]
+library ANIMALGLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(D5A6541C-CEC7-4D54-8CF6-CDAE911830D5),
+		helpstring("_IDijkstraEvents Interface")
+	]
+	dispinterface _IDijkstraEvents
+	{
+		properties:
+		methods:
+		[id(1), helpstring("method MouseDown")] HRESULT MouseDown([in] short Button, [in] short Shift, [in] long x, [in] long y);
+	};
+
+	[
+		uuid(6F02AF52-EC0B-4188-A452-3F1E39F1B347),
+		helpstring("Dijkstra Class")
+	]
+	coclass Dijkstra
+	{
+		[default] interface IDijkstra;
+		[default, source] dispinterface _IDijkstraEvents;
+	};
+};

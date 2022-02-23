@@ -1,0 +1,34 @@
+HKCR
+{
+	AnimAlg.Dijkstra.1 = s 'Dijkstra Class'
+	{
+		CLSID = s '{6F02AF52-EC0B-4188-A452-3F1E39F1B347}'
+	}
+	AnimAlg.Dijkstra = s 'Dijkstra Class'
+	{
+		CLSID = s '{6F02AF52-EC0B-4188-A452-3F1E39F1B347}'
+		CurVer = s 'AnimAlg.Dijkstra.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {6F02AF52-EC0B-4188-A452-3F1E39F1B347} = s 'Dijkstra Class'
+		{
+			ProgID = s 'AnimAlg.Dijkstra.1'
+			VersionIndependentProgID = s 'AnimAlg.Dijkstra'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			ForceRemove 'Control'
+			ForceRemove 'Insertable'
+			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 101'
+			'MiscStatus' = s '0'
+			{
+			    '1' = s '131473'
+			}
+			'TypeLib' = s '{E5266849-C5D9-4D8C-AA1C-B9C65D7BE1A6}'
+			'Version' = s '1.0'
+		}
+	}
+}
